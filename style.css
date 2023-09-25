@@ -59,6 +59,13 @@ html, body {
     height: 200px;
 }
 
+#Functions {
+    display: flex;
+    flex-wrap: wrap;
+    width: 180px;
+    height: 100px;
+}
+
 .Button {
     display: flex;
     justify-content: center;
