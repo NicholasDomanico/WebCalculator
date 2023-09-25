@@ -77,3 +77,8 @@ html, body {
     border-radius: 10px;
     box-shadow: 1px 1px 5px;
 }
+
+.Button:active {
+    background-color: #4995c5;
+    box-shadow: 1px 1px 5px inset;
+}
