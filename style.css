@@ -31,6 +31,8 @@ html, body {
 
 #Display {
     display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
     margin-top: 20px;
     width: 325px;
     height: 120px;
@@ -38,6 +40,13 @@ html, body {
     box-shadow: 2px 2px 2px inset,
     -1px -1px inset;
     background-color: #919090;
+}
+
+#Text {
+    margin-right: 5px;
+    font-size: 4em;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 #Keypad {
