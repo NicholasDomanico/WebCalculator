@@ -6,54 +6,111 @@ const subtract = document.getElementById("Subtract");
 const multiply = document.getElementById("Multiply");
 const divide = document.getElementById("Divide");
 
-let text = ""
-let currentSum = 0;
-let operand = 0;
-let operator = "";
+const equal = document.getElementById("Equal");
+
+let currentNumber = "";
+let opA = 0;
+let opB = 0;
+let operation = "";
 
 //Creates array of number keys and adds event listener to each
 let numbersArray = [...numberKeys];
 for(let i = 0; i < numbersArray.length; i++) {
     numbersArray[i].addEventListener("click", function() {
-        text = text + numbersArray[i].id;
-        operand = Number(text);
-        display(text);
+        currentNumber = currentNumber + numbersArray[i].id;
+        display(currentNumber);
     })
 }
 
 add.addEventListener("click", function() {
-    operator = "+";
-    currentSum = doMath(currentSum, operand);
-    operand = 0;
-    text = String(currentSum);
-    display(text);
-    console.log(operand, operator, currentSum);
-    text = "";
+    if(operation.length === 0){
+        opA = Number(currentNumber);
+        currentNumber = "";
+        operation = "+";
+    }
+
+    else if(operation.length === 1){
+        opB = doMath(opA, Number(currentNumber), operation);
+        display(String(opB));
+        currentNumber = "";
+        operation = "+"
+        opA = opB;
+    }
 })
 
 subtract.addEventListener("click", function() {
-    operator = "-";
-    currentSum = currentSum -= Number(operand);
+    if(operation.length === 0){
+        opA = Number(currentNumber);
+        currentNumber = "";
+        operation = "-";
+    }
+
+    else if(operation.length === 1){
+        opB = doMath(opA, Number(currentNumber), operation);
+        display(String(opB));
+        currentNumber = "";
+        operation = "-"
+        opA = opB;
+    }
 })
 
-function doMath(operandA, operandB) {
-    if (operator === "") {
+multiply.addEventListener("click", function() {
+    if(operation.length === 0){
+        opA = Number(currentNumber);
+        currentNumber = "";
+        operation = "x";
+    }
+
+    else if(operation.length === 1){
+        opB = doMath(opA, Number(currentNumber), operation);
+        display(String(opB));
+        currentNumber = "";
+        operation = "x"
+        opA = opB;
+    }
+})
+
+divide.addEventListener("click", function() {
+    if(operation.length === 0){
+        opA = Number(currentNumber);
+        currentNumber = "";
+        operation = "/";
+    }
+
+    else if(operation.length === 1){
+        opB = doMath(opA, Number(currentNumber), operation);
+        display(String(opB));
+        currentNumber = "";
+        operation = "/"
+        opA = opB;
+    }
+})
+
+equal.addEventListener("click", function() {
+    opB = doMath(opA, Number(currentNumber), operation);
+    display(String(opB));
+    currentNumber = opB;
+    operation = ""
+})
+
+function doMath(operandA, operandB, operation) {
+    if (operation === "") {
         return null;
     }
 
-    if (operator === "+") {
+    if (operation === "+") {
         return operandA + operandB;
     }
 
-    if (operator === "-") {
+    if (operation === "-") {
         return operandA - operandB;
     }
 
-    if (operator === "x") {
+    if (operation === "x") {
         return operandA * operandB;
     }
 
-    if (operator === "/") {
+    if (operation === "/") {
         return operandA / operandB;
     }
 }
