@@ -5,6 +5,7 @@ const add = document.getElementById("Add");
 const subtract = document.getElementById("Subtract");
 const multiply = document.getElementById("Multiply");
 const divide = document.getElementById("Divide");
+const period = document.getElementById(".");
 
 const equal = document.getElementById("Equal");
 
@@ -21,6 +22,17 @@ for(let i = 0; i < numbersArray.length; i++) {
         display(currentNumber);
     })
 }
+
+period.addEventListener("click", function() {
+    if(currentNumber.includes(".") === false) {
+        currentNumber = currentNumber + ".";
+        display(currentNumber);
+    }
+
+    else if(currentNumber.includes(".") === true) {
+        return;
+    }
+})
 
 add.addEventListener("click", function() {
     if(operation.length === 0){
