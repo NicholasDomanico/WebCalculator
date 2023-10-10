@@ -19,8 +19,14 @@ let operation = "";
 let numbersArray = [...numberKeys];
 for(let i = 0; i < numbersArray.length; i++) {
     numbersArray[i].addEventListener("click", function() {
-        currentNumber = currentNumber + numbersArray[i].id;
-        display(currentNumber);
+        if(currentNumber.length < 10){
+            currentNumber = currentNumber + numbersArray[i].id;
+            display(currentNumber);
+        }
+
+        else{
+            return;
+        }
     })
 }
 
@@ -137,5 +143,13 @@ function doMath(operandA, operandB, operation) {
 }
 
 function display(number) {
-    displayText.innerHTML = `${number}`;
+    if(number.length > 10){
+        exponentialNumber = Number(number).toExponential(4);
+        displayText.innerHTML = String(exponentialNumber);
+    }
+
+    else{
+        displayText.innerHTML = `${number}`;
+    }
+    
 }
