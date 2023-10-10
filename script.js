@@ -8,6 +8,7 @@ const divide = document.getElementById("Divide");
 const period = document.getElementById(".");
 
 const equal = document.getElementById("Equal");
+const clear = document.getElementById("Clear");
 
 let currentNumber = "";
 let opA = 0;
@@ -22,6 +23,14 @@ for(let i = 0; i < numbersArray.length; i++) {
         display(currentNumber);
     })
 }
+
+clear.addEventListener("click", function() {
+    currentNumber = "";
+    opA = 0;
+    opB = 0;
+    operation = "";
+    display(currentNumber);
+})
 
 period.addEventListener("click", function() {
     if(currentNumber.includes(".") === false) {
